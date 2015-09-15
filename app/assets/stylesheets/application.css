@@ -13,17 +13,6 @@
  *= require_tree .
  *= require_self
  */
-
- @media screen (min-width: 1024) {
-
- }
-
- @media screen (min-width: 1024) {
-
- }
- @media screen (min-width: 1024) {
-
- }
 .videoWrapper {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
