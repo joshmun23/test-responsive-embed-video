@@ -27,9 +27,6 @@ $(function(){
     height: saVidHeight
   };
 
-  console.log('width: ' + saVidWidth);
-  console.log('height: ' + saVidHeight);
-
   var saVidBreakpoints = {
     small: {
       width: 300,
@@ -45,9 +42,6 @@ $(function(){
     }
   };
 
-  console.log(saVidBreakpoints.medium.width);
-  console.log(saVidBreakpoints.medium.height);
-
   // set width & height based on screen size
   if (saVidWidth >= 1024){
     console.log('large screen')
@@ -62,9 +56,6 @@ $(function(){
     saVidDimensions.width = Math.round(saVidWidth * 0.66);
     saVidDimensions.height = Math.round(saVidHeight * 0.33);
   };
-
-  console.log('width: ' + saVidDimensions.width);
-  console.log('height: ' + saVidDimensions.height);
 
   var url = 'http://www.necn.com/portableplayer/?cmsID=326853441&videoID=DKt5Dc73cWfn&origin=necn.com&sec=news&subsec=business&width='
     + String(saVidDimensions.width) + '&height=' + String(saVidDimensions.height);
