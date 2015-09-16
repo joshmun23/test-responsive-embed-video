@@ -19,8 +19,7 @@ $(function(){
   $(document).foundation();
 
   var saVidWidth  = $(window).width(),
-    saVidHeight = $(window).height(),
-    container = $('#videoWrapper');
+    saVidHeight = $(window).height();
 
   var saVidDimensions = {
     width: saVidWidth,
@@ -47,28 +46,16 @@ $(function(){
     var maxWidth = 600,
         maxHeight = 360;
 
-    saVidDimensions.width = Math.round(saVidWidth * 0.50);
-    saVidDimensions.height = Math.round(saVidHeight * 0.60);
-
-    if (saVidDimensions.width > maxWidth) {
-      saVidDimensions.width = maxWidth;
-      saVidDimensions.height =  maxHeight
-    }
+    saVidDimensions.width = maxWidth;
+    saVidDimensions.height =  maxHeight
   } else if (saVidWidth < 1024 && saVidWidth >= 768) {
-    alert('medium screen')
-
     var maxWidth = 465,
         maxHeight = 258;
 
-    saVidDimensions.width = Math.round(saVidWidth * 0.50);
-    saVidDimensions.height = Math.round(saVidHeight * 0.30);
-
-    if (saVidDimensions.width > maxWidth) {
-      saVidDimensions.width = maxWidth;
-      saVidDimensions.height =  maxHeight;
-    }
+    saVidDimensions.width = maxWidth;
+    saVidDimensions.height =  maxHeight;
   } else if (saVidWidth < 768) {
-    var maxWidth = saVidWidth,
+    var maxWidth = Math.round(saVidWidth * 0.8),
         maxHeight = saVidHeight;
 
     saVidDimensions.width = maxWidth;
@@ -82,6 +69,6 @@ $(function(){
       script.type = 'text/javascript';
       script.src = url;
 
-  $('#videoWrapper').append(script);
+  $('#saVidWrapper').append(script);
 });
 
