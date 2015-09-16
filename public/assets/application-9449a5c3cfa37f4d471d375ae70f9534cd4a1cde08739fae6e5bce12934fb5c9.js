@@ -17275,16 +17275,73 @@ return jQuery;
 
 
 
-$(function(){ $(document).foundation(); });
+$(function(){
+  $(document).foundation();
 
-var height = $(window).height(),
-    width  = $(window).width(),
-    container = $('.videoWrapper'),
+  var saVidWidth  = $(window).width(),
+    saVidHeight = $(window).height(),
+    container = $('#videoWrapper');
 
-container.html('<iframe width="' + width + '" height="'+ height
-  + '" frameborder="0" allowfullscreen src="http://www.necn.com
-  /templates/nbc_partner_player?cmsID=326853441&amp;videoID=DKt
-  5Dc73cWfn&amp;origin=necn.com&amp;sec=news&amp;subsec=business
-  &amp;width=' + width + '&amp;height=' + height + '&amp;turl=
-  http%3A%2F%2Flocalhost%3A3000%2F&amp;ourl=http%3A%2F%2Flocalhost
-  %3A3000&amp;lp=1" style="border: none;"></iframe>')
+  var saVidDimensions = {
+    width: saVidWidth,
+    height: saVidHeight
+  };
+
+  var saVidBreakpoints = {
+    small: {
+      width: 300,
+      height: saVidHeight
+    },
+    medium: {
+      width: 768,
+      height: saVidHeight
+    },
+    large: {
+      width: 1024,
+      height: saVidHeight
+    }
+  };
+
+  // set width & height based on screen size
+  if (saVidWidth >= 1024){
+    var maxWidth = 600,
+        maxHeight = 360;
+
+    saVidDimensions.width = Math.round(saVidWidth * 0.50);
+    saVidDimensions.height = Math.round(saVidHeight * 0.60);
+
+    if (saVidDimensions.width > maxWidth) {
+      saVidDimensions.width = maxWidth;
+      saVidDimensions.height =  maxHeight
+    }
+  } else if (saVidWidth < 1024 && saVidWidth >= 768) {
+    alert('medium screen')
+
+    var maxWidth = 465,
+        maxHeight = 258;
+
+    saVidDimensions.width = Math.round(saVidWidth * 0.50);
+    saVidDimensions.height = Math.round(saVidHeight * 0.30);
+
+    if (saVidDimensions.width > maxWidth) {
+      saVidDimensions.width = maxWidth;
+      saVidDimensions.height =  maxHeight;
+    }
+  } else if (saVidWidth < 768) {
+    var maxWidth = saVidWidth,
+        maxHeight = saVidHeight;
+
+    saVidDimensions.width = maxWidth;
+    saVidDimensions.height =  Math.round(maxWidth / 2.3);
+  };
+
+  var url = 'http://www.necn.com/portableplayer/?cmsID=326853441&videoID=DKt5Dc73cWfn&origin=necn.com&sec=news&subsec=business&width='
+    + String(saVidDimensions.width) + '&height=' + String(saVidDimensions.height);
+
+  var script = document.createElement( 'script' );
+      script.type = 'text/javascript';
+      script.src = url;
+
+  $('#videoWrapper').append(script);
+});
+
