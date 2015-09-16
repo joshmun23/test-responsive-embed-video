@@ -82,7 +82,7 @@ $(function(){
         maxHeight = 200;
 
     saVidDimensions.width = Math.round(saVidWidth * 0.50);
-    saVidDimensions.height = Math.round(saVidHeight * 0.30);
+    saVidDimensions.height = Math.round(saVidHeight * 0.25);
 
     if (saVidDimensions.width > maxWidth) {
       saVidDimensions.width = maxWidth;
